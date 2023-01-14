@@ -19,7 +19,7 @@ let squareXY = {}
 let numberSquares = 0
 let numClicks = 0
 let isClicked = false
-let xTurn = true
+let square = [true, true, true, true, true ,true, true, true, true]
 
 function preload() {
   
@@ -31,53 +31,113 @@ function preload() {
 Description of setup
 */
 function setup() {
+ 
     createCanvas(500,500)
     frameRate(10);
     rectMode(CENTER)
     background("beige")
 }
 
-function mousePressed() {
+function mouseClicked() {
   isClicked = true
   numClicks++
   
   let mouseCoordinates = getMouseXY()
   
-  drawText(mouseCoordinates[0], mouseCoordinates[1])
+  if(numClicks > 1){
+    drawText(mouseCoordinates[0], mouseCoordinates[1])
+}
 
 }
 
-function drawText(mouseCoorX, mouseCoorY){
-    let clickX = mouseX
-    let clickY = mouseY
-    let symbol = ''
-   
-    //get length of object from: https://stackoverflow.com/questions/5223/length-of-a-javascript-object
-    for (let i = 0 ; i < numberSquares; i++) {
-        if(clickX > squareXY[i][0] && clickX < squareXY[i+1][0] ){
-            console.log('x position:', clickX )
-            console.log('x postion curennt', squareXY[i][0] )
-            console.log('x postion after', squareXY[i+1][0] )
-            
-           // if(clickX - squareXY[i][0] < clickX - squareXY[i + 1][0] ){
-               
-              
-         
-        }
-       // console.log(`${i}: ${squareXY[i][0]}`);
-       
-      }
+function getCenter(axe){
 
-    if(numClicks % 2 === 0){
-         symbol = 'x'
-    } else {
-        symbol = 'o'
+    let greater,lesser, click
+
+if(!axe){
+    click = mouseX
+} else {
+    click = mouseY
+}
+   
+
+    if(click < width && click > squareXY[numberSquares-1][axe]){
+        console.log(click)
+      //  lesser = width
+        greater = squareXY[numberSquares-1][axe]
+        return greater
+ 
     }
 
-    text(symbol,mouseCoorX, mouseCoorY );
+    else if(click > 0 && click< squareXY[0][axe]){
+        console.log(click)
+        //greater =  0
+        lesser  = squareXY[0][axe] 
+        return lesser
+    } 
+
+    else if( Math.abs(click - squareXY[0][axe]  ) < Math.abs(click -squareXY[numberSquares-1][axe])) {
+         console.log(click)
+        greater =squareXY[0][axe] 
+        lesser  =  width/2
+
+        if(Math.abs(click - squareXY[0][axe]  ) < Math.abs(click - width/2)){
+         return greater
+         
+        } else {
+        return lesser
+         
+        }
+       
+    } else {
+        
+        greater = width/2
+        lesser  =  squareXY[numberSquares-1][axe]
+
+        if(Math.abs(click - width/2  ) < Math.abs(click - squareXY[numberSquares-1][axe])){
+           
+            return greater
+           
+       
+
+        } else {
+            return lesser
+        } 
+        }
+
+}
  
+
+function drawText(mouseCoorX, mouseCoorY){
+
+ 
+    let clickY = mouseY
+    let symbol = ''
+   // let interval = []
    
+    if(numClicks % 2 === 0){
+        symbol = 'x'
+   } else {
+       symbol = 'o'
+   }
+
+    let xCenter = getCenter(0)
+    let yCenter = getCenter(1)
+    let center = [xCenter, yCenter]
     
+    for(let i = 0; i < numberSquares; i++){
+        //to check if two arrays are equal: https://flexiple.com/javascript/javascript-array-equality/
+        if (JSON.stringify(squareXY[i]) == JSON.stringify(center) && square[i]){
+            console.log(squareXY[i])
+            text( symbol, xCenter, yCenter )
+            //to remove a value from a object: https://www.w3schools.com/howto/howto_js_remove_property_object.asp
+            square[i] = false //prevents from drawing text on a square that has been clicked more than once
+            
+        }    
+    }
+ 
+    
+         
 }
 
 function getMouseXY(){
@@ -126,14 +186,13 @@ function drawGrid(){
 Description of draw()
 */
 function draw() {
- let xyMouse
+ 
     drawGrid()
     
     if(isClicked){
-      //  xyMouse = getMouseXY()
-      //  mouseCoorX = xyMouse[0]
-      //  xyMouse[1] = mouseCoorY
-        drawText(mouseCoorX, mouseCoorY)
+    
+      drawText(mouseCoorX, mouseCoorY)
+ 
      }
 
      isClicked = false
