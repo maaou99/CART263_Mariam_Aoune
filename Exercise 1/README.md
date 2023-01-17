@@ -28,6 +28,7 @@ If all the values evaluate to true, a symbol appears on each square
 
 For example, the player has clicked on the third square (I am counting starting from the top left corner). 
 Therefore, at index 2, the value false will be replaced by a symbol, evaluating to true. 
+<br>
 <img src="https://user-images.githubusercontent.com/53101129/212805258-2b34a5aa-4772-43ec-9ae9-85eef9a55c93.png" width="400" height="50">
 
 5. If at least three elements in the array mentionned above evaluates to true, then the program will check if the combination of these three values equal to one of the combinations stored in possibleCombinations 
