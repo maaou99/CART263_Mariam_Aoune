@@ -2,7 +2,7 @@
 
 This program allows two players to play tic tac toe
 
-## Strategy and deconstruction of code
+## Strategy with example
 
 1. The computer draws a 3x3 grid or, in other words, nine squares.
 <img src="https://user-images.githubusercontent.com/53101129/212801673-6f6b6a56-2487-4c9b-8517-7608496ca6cd.png" width="150" height="150">
@@ -12,7 +12,7 @@ This program allows two players to play tic tac toe
 <img src="https://user-images.githubusercontent.com/53101129/212807742-57b0dc0b-441a-42cb-913f-106cb3bc7953.png" width="450" height="50">
 
 For example, at the index 4, the x and y coordinates (250,250) is stored.
-In other words, the center of the fourth square (middle row second square) has a center situated at (250,250).
+In other words, the center of the fifth square (middle row second square) has a center situated at (250,250).
 <br>
 <img src="https://user-images.githubusercontent.com/53101129/212803283-0f9306ad-4545-4030-8c58-9361b6e0fc60.png" width="250" height="200">
  <br><br>                                                                                                                                  	 
