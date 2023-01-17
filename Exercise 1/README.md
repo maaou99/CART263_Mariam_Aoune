@@ -28,7 +28,8 @@ If all the values evaluate to true, a symbol appears on each square
 <br>
 <img src="https://user-images.githubusercontent.com/53101129/212804546-7f0d6b7f-c4ee-4bb0-83b7-0152d5f89c15.png" width="250" height="250">
 <br>
-For example, the combination 456 represents a win. If there is an 'x' on square number four, five and 6, the program has found the winner. 
+
+For example, the combination 456 represents a win. If there is an 'x' on square number four, five and 6, The values in array squareContains will evaluate to true at index 3,4,5. the program has found the winner. 
 <br><br>
 
 5. When one player clicks on any square, the square will be given a value of true at index i and the symbol will be inserted at index i.
@@ -42,6 +43,7 @@ Therefore, at index 2, the value false will be replaced by a symbol, evaluating 
 6. Suppose at least three elements in the array mentioned above evaluate to true. In that case, the program will check if the combination of these three values equals one of the combinations stored in possibleCombinations
 ![image](https://user-images.githubusercontent.com/53101129/212806214-0afa1b3c-4aeb-41a1-919b-d7f27f4af840.png)
 <br><br>
+
 
 7. If the comparison evaluates true, the program has found a winner. It will display which winner won and initialize all global variables to restart the game.
  
