@@ -15,15 +15,17 @@ For example, at the index 4, the x and y coordinates (250,250) is stored.
 In other words, the center of the fifth square (middle row second square) has a center situated at (250,250).
 <br>
 <img src="https://user-images.githubusercontent.com/53101129/212803283-0f9306ad-4545-4030-8c58-9361b6e0fc60.png" width="250" height="200">
- <br><br>                                                                                                                                  	 
+ <br><br>  
+ 
 3. Initially, each square is represented by the value false, stored within the array squareContains
 ![image](https://user-images.githubusercontent.com/53101129/212803481-b3333d9d-d79d-4f37-9018-f226cbc120f7.png)
 
 If all the values in that array are equal to false, the game has not started yet.
 If all the values evaluate to true, a symbol appears on each square
 <br><br>
+
 4. To identify all the possibilities of winning, each square is represented by a number.
-5. <br>
+<br>
 <img src="https://user-images.githubusercontent.com/53101129/212804546-7f0d6b7f-c4ee-4bb0-83b7-0152d5f89c15.png" width="250" height="250">
 <br>
 For example, the combination 456 represents a win. If there is an 'x' on square number four, five and 6, the program has found the winner. 
