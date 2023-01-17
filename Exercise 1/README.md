@@ -10,7 +10,8 @@ This program allows two players to play tic tac toe
 2. The x and y coordinate representing the center of each of the nine squares is stored in an object called squareXY
 ![image](https://user-images.githubusercontent.com/53101129/212803590-f7358e33-5ed8-4b93-9744-5cda6c97df21.png)
 
-For exemple, at the index 4, the x and y coordinates (250,250) is stored. In other words, the center of the fourth square (middle row second square) has a center situated at (250,250). 
+For exemple, at the index 4, the x and y coordinates (250,250) is stored. 
+In other words, the center of the fourth square (middle row second square) has a center situated at (250,250). 
 <img src="https://user-images.githubusercontent.com/53101129/212803283-0f9306ad-4545-4030-8c58-9361b6e0fc60.png" width="250" height="200">
                                                                                                                                         
 3. Initially each square is represented by the value false, stored within the array squareContains 
