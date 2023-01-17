@@ -31,9 +31,9 @@ If all the values evaluate to true, a symbol appears on each square
 For example, the combination 456 represents a win. If there is an 'x' on square number four, five and 6, the program has found the winner. 
 <br><br>
 
-5. When one player clicks on any square, the square will be given a value of true at index i and the symbol (equals true) will be inserted at index i.
+5. When one player clicks on any square, the square will be given a value of true at index i and the symbol will be inserted at index i.
 
-For example, the player has clicked on the third square (I am counting starting from the top left corner).
+For example, the player has clicked on the third square.
 Therefore, at index 2, the value false will be replaced by a symbol, evaluating to true.
 <br>
 <img src="https://user-images.githubusercontent.com/53101129/212805258-2b34a5aa-4772-43ec-9ae9-85eef9a55c93.png" width="400" height="50">
