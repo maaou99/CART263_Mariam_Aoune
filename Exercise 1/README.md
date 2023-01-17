@@ -24,8 +24,16 @@ If all the values evaluate to true, a symbol appears on each square
 
 5. When one player clicks on any square, the square will be given a value of true at index i and the symbol (equals true) will be inserted at index i. 
 
-For example, the player has clicked on the third square (I am counting starting from the top left corner). Therefore, at index 2, the value false will be replaced by a symbol, evaluating to true. 
+For example, the player has clicked on the third square (I am counting starting from the top left corner). 
+Therefore, at index 2, the value false will be replaced by a symbol, evaluating to true. 
 <img src="https://user-images.githubusercontent.com/53101129/212805258-2b34a5aa-4772-43ec-9ae9-85eef9a55c93.png" width="400" height="50">
+
+5. If at least three elements in the array mentionned above evaluates to true, then the program will check if the combination of these three values equal to one of the combinations stored in possibleCombinations 
+![image](https://user-images.githubusercontent.com/53101129/212806214-0afa1b3c-4aeb-41a1-919b-d7f27f4af840.png)
+
+6. If the comparasion evaluates true, the program has found a winner. It will display which winner has won and will initialize all global variables to restart the game 
+
+![image](https://user-images.githubusercontent.com/53101129/212806859-30f87445-e20f-4281-9259-079e2c5daf10.png)
 
 
 
