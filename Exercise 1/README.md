@@ -37,7 +37,7 @@ Therefore, at index 2, the value false will be replaced by a symbol, evaluating 
 6. If the comparasion evaluates true, the program has found a winner. It will display which winner has won and will initialize all global variables to restart the game 
 
 ![image](https://user-images.githubusercontent.com/53101129/212806859-30f87445-e20f-4281-9259-079e2c5daf10.png)
-
+<img src="https://user-images.githubusercontent.com/53101129/212806859-30f87445-e20f-4281-9259-079e2c5daf10.png" width="250" height="250">
 
 
 ## Persisting Problems 
