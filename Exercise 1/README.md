@@ -1,6 +1,7 @@
 # Tic Tac Toe with p5.js
 
 This program allows two players to play tic tac toe.
+All code was written by me. I have refrenced the websites I used to find built-in Javascript methods. 
 
 ## Strategy with example
 
@@ -56,3 +57,8 @@ identify the winner.
 2. Currently, player one must double click to start the game. Ideally, the game starts after one click
 3. There is no counter.
 
+## Reference 
+1.  to check if two arrays are equal: https://flexiple.com/javascript/javascript-array-equality/
+2.  to remove a value from a object: https://www.w3schools.com/howto/howto_js_remove_property_object.asp
+3.  the split method: https://www.w3schools.com/jsref/jsref_split.asp
+4. How to Split a Number into an Array in JavaScript: https://codingbeautydev.com/blog/javascript-split-number-into-array/
