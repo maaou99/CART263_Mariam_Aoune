@@ -1,7 +1,7 @@
 # Tic Tac Toe with p5.js
 
 This program allows two players to play tic tac toe.
-All code was written by me. I have refrenced the websites I used to find built-in Javascript methods. 
+
 
 ## Strategy with example
 
