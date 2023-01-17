@@ -44,7 +44,7 @@ Therefore, at index 2, the value false will be replaced by a symbol, evaluating 
 
 
 ## Persisting Problems
-1. After the game has restarted, meaning it has already been played once, the program does not always
+1. After the game has restarted, meaning it has already been played at least once, the program does not always
 identify the winner.
 2. Currently, player one must double click to start the game. Ideally, the game starts after one click
 3. There is no counter.
