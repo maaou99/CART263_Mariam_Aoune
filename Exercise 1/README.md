@@ -6,6 +6,7 @@ This program allows two players to play tic tac toe
 
 1. The computer draws a 3x3 grid or, in other words, nine squares. 
 ![image](https://user-images.githubusercontent.com/53101129/212801673-6f6b6a56-2487-4c9b-8517-7608496ca6cd.png =250x250)
+<img src="https://user-images.githubusercontent.com/53101129/212801673-6f6b6a56-2487-4c9b-8517-7608496ca6cd.png" width="100" height="100">
 
 
 ## Persisting Problems 
