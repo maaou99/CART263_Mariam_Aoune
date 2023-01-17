@@ -23,6 +23,7 @@ If all the values in that array are equal to false, the game has not started yet
 If all the values evaluate to true, a symbol appears on each square
 <br><br>
 4. To identify all the possibilities of winning, each square is represented by a number.
+5. <br>
 <img src="https://user-images.githubusercontent.com/53101129/212804546-7f0d6b7f-c4ee-4bb0-83b7-0152d5f89c15.png" width="250" height="250">
 <br><br>
 5. When one player clicks on any square, the square will be given a value of true at index i and the symbol (equals true) will be inserted at index i.
