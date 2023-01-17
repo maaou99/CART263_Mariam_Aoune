@@ -29,7 +29,7 @@ If all the values evaluate to true, a symbol appears on each square
 <img src="https://user-images.githubusercontent.com/53101129/212804546-7f0d6b7f-c4ee-4bb0-83b7-0152d5f89c15.png" width="250" height="250">
 <br>
 
-For example, the combination 456 represents a win. If there is an 'x' on square number four, five and 6, The values in array squareContains (see step 3) will evaluate to true at index 3,4,5. the program has found the winner. 
+For example, the combination 456 represents a win. If there is an 'x' on square number four, five and 6, the values in array squareContains (see step 3) will evaluate to true at index 3,4,5. The program has found the winner. 
 <br><br>
 
 5. When one player clicks on any square, the square will be given a value of true at index i and the symbol will be inserted at index i.
