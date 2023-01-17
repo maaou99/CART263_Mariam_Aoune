@@ -12,6 +12,7 @@ This program allows two players to play tic tac toe
 
 For exemple, at the index 4, the x and y coordinates (250,250) is stored. 
 In other words, the center of the fourth square (middle row second square) has a center situated at (250,250). 
+<br>
 <img src="https://user-images.githubusercontent.com/53101129/212803283-0f9306ad-4545-4030-8c58-9361b6e0fc60.png" width="250" height="200">
                                                                                                                                         
 3. Initially each square is represented by the value false, stored within the array squareContains 
