@@ -1,13 +1,13 @@
 # Tic Tac Toe with p5.js
 
-This program allows two players to play tic tac toe
+This program allows two players to play tic tac toe.
 
 ## Strategy with example
 
 1. The computer draws a 3x3 grid or, in other words, nine squares.
 <img src="https://user-images.githubusercontent.com/53101129/212801673-6f6b6a56-2487-4c9b-8517-7608496ca6cd.png" width="150" height="150">
 <br><br>
-2. The x and y coordinate representing the center of each of the nine squares is stored in an object called squareXY
+2. The x and y coordinate representing the center of each of the nine squares is stored in an object called squareXY.
 <br>
 <img src="https://user-images.githubusercontent.com/53101129/212807742-57b0dc0b-441a-42cb-913f-106cb3bc7953.png" width="450" height="50">
 
@@ -17,11 +17,11 @@ In other words, the center of the fifth square (middle row second square) has a 
 <img src="https://user-images.githubusercontent.com/53101129/212803283-0f9306ad-4545-4030-8c58-9361b6e0fc60.png" width="250" height="200">
  <br><br>  
  
-3. Initially, each square is represented by the value false, stored within the array squareContains
+3. Initially, each square is represented by the value false, stored within the array squareContains.
 ![image](https://user-images.githubusercontent.com/53101129/212803481-b3333d9d-d79d-4f37-9018-f226cbc120f7.png)
 
 If all the values in that array are equal to false, the game has not started yet.
-If all the values evaluate to true, a symbol appears on each square
+If all the values evaluate to true, a symbol appears on each square.
 <br><br>
 
 4. To identify all the possibilities of winning, each square is represented by a number.
@@ -40,7 +40,7 @@ Therefore, at index 2, the value false will be replaced by a symbol, evaluating 
 <img src="https://user-images.githubusercontent.com/53101129/212805258-2b34a5aa-4772-43ec-9ae9-85eef9a55c93.png" width="400" height="50">
 <br><br>
 
-6. Suppose at least three elements in the array mentioned above evaluate to true. In that case, the program will check if the combination of these three values equals one of the combinations stored in possibleCombinations
+6. Suppose at least three elements in the array mentioned above evaluate to true. In that case, the program will check if the combination of these three values equals one of the combinations stored in possibleCombinations.
 ![image](https://user-images.githubusercontent.com/53101129/212806214-0afa1b3c-4aeb-41a1-919b-d7f27f4af840.png)
 <br><br>
 
