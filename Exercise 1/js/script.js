@@ -1,26 +1,12 @@
 /**
-Title of Project
-Author Name
+Title of Project: Tic Tac Toe game CART263
+Author Name: Mariam Aoune
 
-This is a template. You must fill in the title,
-author, and this description to match your project!
+ 
 */
 
 "use strict";
-
  
-
-
-
-
-
-
-
-
-/**
-Description of preload
-*/
-
 let squareXY = {} //center point of each square
 let numberSquares = 0
 let numClicks = 0
@@ -61,6 +47,8 @@ function drawGrid() {
             //draws square 
 
             rect(xSquare + (width / 3) / 2, ySquare + (height / 3) / 2, width / 3, height / 3)
+            
+            //stores the center point of square 
             getSquareXY(xSquare + (width / 3) / 2, ySquare + (height / 3) / 2)
 
             //to draw the next square 
@@ -98,12 +86,9 @@ function playGame(mouseCoorX, mouseCoorY) {
     if (numClicks % 2 === 0) {
         
     //allows X or O depending of the number of clicks is an odd or even number
-
-        console.log('num click', numClicks)
         symbol = 'x'
 
     } else {
-        console.log('num click', numClicks)
         symbol = 'o'
 
     }
@@ -136,13 +121,13 @@ function playGame(mouseCoorX, mouseCoorY) {
             squareContains[i] = symbol //data (x or o) is saved 
         }
     }
-
+    console.log(squareContains)
     checkSquare()
 
 }
 
 function getCenter(axe) {
-
+    //find a central point that is closest to mouseX or mouseY
    
     let greater, lesser, click
 
@@ -373,7 +358,6 @@ function getMouseXY() {
 function mousePressed() {
     startGame = true
     numClicks++
- 
 
     let mouseCoordinates = getMouseXY()
 
