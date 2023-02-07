@@ -28,7 +28,7 @@ function setup() {
     //create button to start animation
     button = createButton("Play Animation");
     button.mousePressed(playAudioAndDraw);
-
+    background('white')
     createCanvas(500, 500)
     rectMode(CENTER)
     noStroke()
@@ -69,8 +69,9 @@ function playAudioAndDraw(){
 }
 
 function draw() {
-    background(color(0, 0, 100 - frameCount/3));
+   
  if(isPlaying){
+    background(color(0, 0, 100 - frameCount/3));
 
   
    //the animation is playing 
@@ -82,7 +83,7 @@ function draw() {
     //goes through each ball and preforms actions
         
         //draws a ball
-        balls[i].draw(i)
+        balls[i].drawAllShapes(i)
 
         //x and y values are modified 
         balls[i].move()
@@ -108,7 +109,6 @@ function draw() {
 
 class Particle{
     constructor(randomSize, x, y){
-        this.background = 'white'
         this.x = x
         this.y = y
         this.mouse = mouseX
@@ -145,7 +145,7 @@ class Particle{
     }
 
  
-    reduceOpacity(colorParticle){
+    reduceOpacity(){
       //reduces opacity by 0.025 every frame 
       this.background = '#F5F5F5'
       this.alpha = this.alpha - 0.025
@@ -156,7 +156,6 @@ class Particle{
         this.background = '#A9A9A9'
         this.alpha = 1  
       }
-      
         return this.alpha
     }
 
