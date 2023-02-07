@@ -6,7 +6,7 @@ This project aimed to visualize and animate particles behaving in a specific con
 
 The idea given to me was "feeling left out in a club." With this topic, I was guided to code particles behaving in a specific manner. However, before coding, I needed to visualize what I would create. So I decided to make a mood board to illustrate my thought process. 
 
-<img src=" https://user-images.githubusercontent.com/53101129/217102855-49f99857-ca58-45e3-b894-ebd5d9c9e103.png " width="150" height="150">
+![image](https://user-images.githubusercontent.com/53101129/217120779-aef3da54-c652-418c-a420-3ec56623a50f.png)
 
 As indicated at the bottom of my mood board, one way to describe the topic was through a storyline. At first, a group of 'particles'  (people) scatter around the space and find their own area to stay in and party. However, there is one particle who feels a sense of loneliness. Although they are surrounded by people and trying to enjoy the moment, they still disconnect from their surroundings. They become victims of their thoughts, leading to mental dissociation. 
 
