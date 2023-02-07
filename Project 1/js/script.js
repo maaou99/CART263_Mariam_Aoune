@@ -6,47 +6,40 @@ Author Name: Mariam Aoune
 */
 
 "use strict";
+
  
-let ball;
 let balls = []
 let singleBall = []
 let startTime;
-let ballsFrozen = false //the balls are still jiggling 
-let flickering = true 
-let x = 100;
-let y = 100;
-let diameter = 50;
-let xSpeed = 5;
-let ySpeed = 3;
 let isPlaying = false
 let button
-
-
 let mySound;
+ 
 
 function preload() {
    mySound = loadSound('/assets/sounds/audio_final.mp4');
  
 }
 
-
-
 /**
 Description of setup
 */
 function setup() {
-    button = createButton("Play Music");
+    //create button to start animation
+    button = createButton("Play Animation");
     button.mousePressed(playAudioAndDraw);
+
     createCanvas(500, 500)
-    noSmooth();
     rectMode(CENTER)
-    background("beige")
     noStroke()
     frameRate(15)
     colorMode(HSB, 360, 100, 100);
    
-    for(let i = 0; i< 50; i++){
-        balls[i] = new Particle(random(10,20), random(200,300), random(200,300))
+   
+    //creates an instance of 50 shapes
+    //each shape has a random size, and x/y positions
+    for(let i = 0; i< 100; i++){
+        balls[i] = new Particle(random(5,20), random(200,300), random(200,300))
     }
 
 }
@@ -56,103 +49,113 @@ Description of draw()
 */
 
 function playAudioAndDraw(){
+    //playes the music 
+    //stylize the button
     let audio = new p5.SoundFile('/assets/sounds/audio_final.mp4');
+
     isPlaying = true
+
+    //plays the music
     mySound.play();
+
+    //starts the timer
     startTime = millis();
+
+    //stylized the button
     button.style("display", "none");
+
+   
  
 }
+
 function draw() {
-   // pastel, dreamy colors : color(random(200,255), random(200,255), random(200,255) )
-   background("beige")
+
+ 
  if(isPlaying){
-   
+
+    background(color(0, 0, 100 - frameCount/3));
+   //the animation is playing 
+
+    //time the program is running
     let elapsedTime = millis() - startTime;
    
     for(let i = 0; i < balls.length; i++){
- 
+    //goes through each ball and preforms actions
         
+        //draws a ball
         balls[i].draw(i)
+
+        //x and y values are modified 
         balls[i].move()
+
+        //keeps the ball within the range 
         balls[i].bounce()
       
-        if(elapsedTime > 2500){
+        if(elapsedTime > 2400){
+            //speed is reduced after a certain amount of time 
             balls[i].reduceSpeed()
           
         } else {
+            //speed is increased
             balls[i].increaseSpeed()
 
         }
-
-     
-     
-    }
-
-    
-   
+    }  
 
  }
-   
- 
-      
-   
+     
 }
 
 
 class Particle{
     constructor(randomSize, x, y){
+        this.background = 'white'
         this.x = x
         this.y = y
         this.mouse = mouseX
         this.speed = 0.5
         this.size = randomSize
-        this.flickering = true //the balls are still jiggling 
+        this.flickering = true
         this.alpha = 1
         this.h = random(360)
         this.s = random(90,100)
         this.b = random(90,100)
         this.color = color(this.h,  this.s,   this.b, this.alpha);
+
+        //the single particle has not appeared yet
         this.singleParticle = false
         this.blur = 0
+
+        //the blur has not appeared yet
         this.blurVariation = false
         this.transparentShape = false
+
         this.xoff = 0
         this.yoff = 0
 
     }
 
-    flicker(){
-       // mySound.play();
-        
-    }
-
     showOneParticle(){
-    
+    //one particle appears after all the particles have disapeared
         singleBall = [balls[11]]
-      
-        balls = singleBall
         
-        this.singleParticle = false
-       //console.log(this.singleParticle, balls)
-
-
-
+        //the ball array is now a length of one 
+        balls = singleBall
+         
+       
     }
 
  
     reduceOpacity(colorParticle){
- 
+      //reduces opacity by 0.025 every frame 
+      this.background = '#F5F5F5'
       this.alpha = this.alpha - 0.025
       
       if(this.alpha <= 0 ){
-       
+       //when the particles disapears a single particle will disapear 
         this.singleParticle = true 
-        this.alpha = 1
-
-     
-
-        
+        this.background = '#A9A9A9'
+        this.alpha = 1  
       }
       
         return this.alpha
@@ -161,14 +164,15 @@ class Particle{
  
     reduceSpeed(){
         if(this.speed >= 1 ){
-            
+
+            //reduces the speed by 0.2 each frame 
             this.speed = this.speed - 0.2
             return this.speed
 
         } else {
-            this.flickering = false
-          
-            
+
+            //when the particles stop moving, reduce speed
+            this.flickering = false    
         } 
        
     }
@@ -176,29 +180,31 @@ class Particle{
     increaseSpeed(){
 
      if(this.speed < 20){
+        //increases speed by one if speed is less than 20
         return this.speed++
      }
       
     }
 
     fillShape(){
-     
+     //creates a new fill
             fill(this.h, this.s, this.b, this.alpha) 
 
             if(this.flickering){
+                //changes the fill
                 this.newColor()
             }
     }
 
     move(){
 
-        if(this.speed >= 1){
-            this.mouse = map(mouseX, 0, width, 0, 5);
+        if(this.speed >= 2){
+            //x and y position varies depend on the speed of the particle
             this.x += random(-this.speed, this.speed)
             this.y += random(-this.speed, this.speed)
 
         } else {
-          
+            //use of noise to jiggle the particles
             this.xoff += 0.1
             this.yoff += 0.1
             this.x +=  random(-noise(this.xoff) * 2, noise(this.xoff)  * 2)
@@ -208,6 +214,10 @@ class Particle{
     }
 
     drawSpikyShape(){
+        //reference: https://editor.p5js.org/squishynotions/sketches/2I2CpRpn6
+
+        //draws the spikey shapes
+
         push();
         let numSpikes = 10
         
@@ -221,8 +231,12 @@ class Particle{
     
     draw(index){
          
-        //setCenter(this.x/width, this.y/4);
-       // polarEllipses(1, this.size, this.size, 10);
+       //main method of the class
+       //1. draws spiky shapes before the blur 
+       //2. all shapes disapear except one
+       //3. blurs one particle
+       //4. the single spiky particle becomes a shape with polar coordinates 
+     
        if(!this.blurVariation){
         this.drawSpikyShape()
         this.fillShape()
@@ -243,18 +257,18 @@ class Particle{
            
         this.reduceOpacity()
        
-    }
-
-     
-    }
+    }}
 
     toBlur(){
         if(!this.blurVariation){
+            //adds blur effect 
             drawingContext.filter = 'blur('+String(this.blur)+ 'px)';
+
+            //increases blur
             this.blur += 0.3
-            console.log('entering', this.blur)
+          
             if(this.blur > 25){
-                
+                //blur has finished increasing 
                 this.blurVariation = true
                 return 
             }
@@ -266,14 +280,12 @@ class Particle{
     }
 
     decreaseBlur(){
-        this.blur -= 0.3
+        this.blur -= 0.2
         drawingContext.filter = 'blur('+String(this.blur)+ 'px)';
 
         if(this.blur < 0 ){
           this.followMouse()
         }
-
-
     }
     
     followMouse(){
@@ -283,15 +295,17 @@ class Particle{
         let targetX = mouseX;
         let targetY = mouseY;
         this.speed = 2
+
+        //allows the particle to move from a distance
         this.x += (targetX - this.x) * this.speed / 100;
         this.y += (targetY - this.y) * this.speed / 100;
 
     }
     drawPolarShape(){
+        //draws geometric shape using the polar.js library 
+
         frameRate(120)
            
-          
-        
         if(!this.transparentShape){
             fill(color(100,100,100,0))
             this.transparentShape = true
@@ -300,30 +314,31 @@ class Particle{
             this.fillPolarShape()
         }       
         setCenter(this.x, this.y);
-        frameRate(30)
-        polarEllipses(10, 10+sin(frameCount/15)*20, 20, 20);
+        
+        polarEllipses(10, 20+sin(frameCount/15)*20, 20, 20);
       
       
     }
 
     fillPolarShape(){
-       // https://happycoding.io/tutorials/p5js/for-loops/vertical-gradient
+       // Vertical Gradient, https://happycoding.io/tutorials/p5js/for-loops/vertical-gradient
    colorMode(RGB)
-   
+    
       const m = 100;
 
       const topR = 255 * noise(frameCount / m);
       const topG = 255 * noise(1000 + frameCount / m);
       const topB = 255 * noise(2000 + frameCount / m);
-       const bottomR = 255 * noise(3000 + frameCount / m);
+      const bottomR = 255 * noise(3000 + frameCount / m);
       const bottomG = 255 * noise(4000  + frameCount / m);
       const bottomB = 255 * noise(5000 + frameCount / m);
 
-  const topColor = color(topR, topG, topB);
-  const bottomColor = color(bottomR, bottomG, bottomB);
+      const topColor = color(topR, topG, topB);
+      const bottomColor = color(bottomR, bottomG, bottomB);
 
-  for(let y = 0; y < height; y++) {
-    const lineColor = lerpColor(topColor, bottomColor, y / height);
+      for(let y = 0; y < height; y++) {
+
+        const lineColor = lerpColor(topColor, bottomColor, y / height);
 
           fill(lineColor);
           line(0, y, width, y);
@@ -331,31 +346,22 @@ class Particle{
 }
 
     newColor(){
-     
+     //creates a new color
         this.h = random(360)
         this.s = random(90,100)
         this.b = random(90,100)
-
-        
-        
+  
     }
 
     bounce(){
+
+        //keeps the particles within the canvas
+
         if(this.x > width || this.x <  0 || this.y > height || this.y <   0  ){
             this.x--
           
-        }
-    }
-
-    toGradient() {
-        let gradient = drawingContext.createLinearGradient(0,0,100,100);
-        gradient.addColorStop(0, 'red');
-        gradient.addColorStop(1, 'blue');
-        
-        drawingContext.fillStyle = gradient;
-        drawingContext.fillRect(0,0,this.x,
-            this.y);
-      }
+        } }
+ 
 }
 
  

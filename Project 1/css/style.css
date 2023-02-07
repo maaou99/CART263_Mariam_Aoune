@@ -21,11 +21,10 @@ body {
 
 button{
   background-color: white;
-  width: 100px;
+  width: 130px;
+  height:30px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  
 }
