@@ -228,7 +228,7 @@ class Particle{
         pop();
     }
     
-    draw(index){
+    drawAllShapes(index){
          
        //main method of the class
        //1. draws spiky shapes before the blur 
