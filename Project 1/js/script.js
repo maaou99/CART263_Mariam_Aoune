@@ -69,11 +69,10 @@ function playAudioAndDraw(){
 }
 
 function draw() {
-
- 
+    background(color(0, 0, 100 - frameCount/3));
  if(isPlaying){
 
-    background(color(0, 0, 100 - frameCount/3));
+  
    //the animation is playing 
 
     //time the program is running
@@ -186,7 +185,7 @@ class Particle{
       
     }
 
-    fillShape(){
+    fillSpikyShape(){
      //creates a new fill
             fill(this.h, this.s, this.b, this.alpha) 
 
@@ -239,7 +238,7 @@ class Particle{
      
        if(!this.blurVariation){
         this.drawSpikyShape()
-        this.fillShape()
+        this. fillSpikyShape()
        } else {
         this.drawPolarShape()
       
