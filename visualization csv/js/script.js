@@ -91,7 +91,7 @@ class DataPoint {
     this.showData = false
 
     //position of the question in the array this.question
-    this.currentTextIndex = 90;
+    this.currentTextIndex = 0;
 
     //knows how long the question has appeard
     this.currentTextDisplayTime = 0;
