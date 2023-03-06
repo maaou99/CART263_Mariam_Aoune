@@ -6,7 +6,7 @@ The number of lines in circles depends on the scale of the percentage. For examp
 
 The font used was intended to make the subject feel intimate and personal as if someone is writing in a journal. 
 
-##Difficulties encountered
+## Difficulties encountered
 1. I found it difficult to retrieve the answers 
 2. It was also challenging to display each question consecutively after the button click. The use of many booleans was necessary.
 3. Identifying the empty string was necessary but difficult to establish. 
