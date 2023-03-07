@@ -37,8 +37,10 @@ function setup() {
     var circle = {
       x: random(50, width - 50),
       y: random(50, height - 50),
-      r: random(45, 60)
+      r: random(width/13, height/4)
     }
+
+   
 
     // Check if the new circle overlaps with any previous circles
     var overlapping = false;
@@ -66,7 +68,7 @@ function setup() {
     }
   }
 
-
+  console.log(width/13, height/4)
 }
 
 function draw() {
