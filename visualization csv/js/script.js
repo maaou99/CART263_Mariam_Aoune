@@ -21,7 +21,7 @@ function setup() {
   textFont(fontRegular)
   noStroke()
 
- 
+    //creating an instance of a class
     points = new DataPoint();
  
 
@@ -43,10 +43,12 @@ function setup() {
    
 
     // Check if the new circle overlaps with any previous circles
-    var overlapping = false;
-    for (var j = 0; j < circles.length; j++) {
-      var other = circles[j];
-      var d = dist(circle.x, circle.y, other.x, other.y);
+    let overlapping = false;
+
+    for (let j = 0; j < circles.length; j++) {
+
+      let other = circles[j];
+      let d = dist(circle.x, circle.y, other.x, other.y);
 
       //checking the distance between two circles
       if (d < circle.r + other.r + 10) {
@@ -68,7 +70,7 @@ function setup() {
     }
   }
 
-  console.log(width/13, height/4)
+ 
 }
 
 function draw() {
@@ -335,6 +337,7 @@ class DataPoint {
 
           fill('orange')
 
+          //draw circle with the object circles creating in setup
           ellipse(circles[j].x, circles[j].y, circles[j].r * 2, circles[j].r * 2);
 
           //draw lines in the circle
@@ -362,12 +365,15 @@ class DataPoint {
       //remove button to signify the end of the program
       this.button.remove()
 
+      //find row 
       indexText = (indexText - this.circlesData.length) - 1
       return indexText
 
 
     }  else if (table.getString(indexText, 1) === '') {
 
+      //the row contains empty strings 
+      
       //updates the row number if the program is at the last question
       indexText = (indexText - this.circlesData.length)
 
