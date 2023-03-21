@@ -1,6 +1,8 @@
 # masculinity survey data visualization
 
-The programs displays the data in text form and visually through circles and lines. 
+The programs displays the data in text form and visually.
+
+The circles represent the number or of answers available for a specefic question. 
 
 The number of lines in circles depends on the scale of the percentage. For example, a circle representing the result of 85 will show more lines than a circle representing 15%. 
 
