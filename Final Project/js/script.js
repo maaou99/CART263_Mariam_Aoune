@@ -64,13 +64,15 @@ function takesnap() {
 
 
 function draw() {
-   
+ 
    // Draw the video
    if(!pictureTaken){
     image(capture, 0, 0,windowWidth, windowHeight);
    
    } else {
-      loadPixels()
+     
+    
+    
    }
   
   
