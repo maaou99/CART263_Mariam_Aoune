@@ -22,6 +22,7 @@ function setup() {
   rectMode(CENTER)
   webcamCapture = new WebCam();
   startGame = new Game();
+  startGame.drawfood()
   webcamCapture.setup();
 
 
@@ -48,7 +49,7 @@ class Game {
   handleClick() {
      //chatGPT, "get pixel color  after mouse click in p5.js in a class", march 25th
     if(pictureTaken){
-
+   
         // Get the pixel position of the mouse click
       let x = mouseX;
       let y = mouseY;
@@ -68,11 +69,19 @@ class Game {
     } else {
       console.log('non clickable area')
     }
+
+    //code for drag and drop food
+
+
+    this.dragDropFood()
+
  
 
     }
   
   }
+
+  dragDropFood()
 
   checkColor(currentPixels, matchingPixels){
     
@@ -108,6 +117,11 @@ class Game {
     text(`Counter: ${this.counter}`, 50, 60)
     
 
+  }
+
+  drawfood(){
+
+    
   }
 
 
