@@ -56,7 +56,7 @@ class Game {
       let regionX = width / 2 - 400 / 2;
       let regionY = height / 2 - 400 / 2;
 
-      this.getClickableArea()
+      //this.getClickableArea()
     //"delimit the clickable area to a rectangular region in the middle of the screen", chatGPT march 
     if(x > regionX && x < regionX + 400 && y > regionY && y < regionY + 400){
        console.log('clickable area')
