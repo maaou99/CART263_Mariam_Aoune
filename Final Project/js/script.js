@@ -84,7 +84,7 @@ class Game {
     //code for drag and drop food
 
 
-    this.dragDropFood()
+    // this.dragDropFood()
 
  
 
