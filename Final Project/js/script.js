@@ -13,16 +13,24 @@ Author Name: Mariam Aoune & Maloney Khim
 
 
 let pictureTaken = false 
-let  webcamCapture
+let webcamCapture
 let startGame 
 let finalImage
+
+let food = {
+  x: 200,
+  y: 200,
+  size: 100,
+  dragging: false,
+};
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   rectMode(CENTER)
   webcamCapture = new WebCam();
   startGame = new Game();
-  startGame.drawfood()
+ // startGame.drawfood()
   webcamCapture.setup();
 
 
@@ -33,6 +41,8 @@ function setup() {
 function draw() {
 
   webcamCapture.main()
+  startGame.main()
+  
 }
 
 
@@ -50,6 +60,7 @@ class Game {
      //chatGPT, "get pixel color  after mouse click in p5.js in a class", march 25th
     if(pictureTaken){
    
+ 
         // Get the pixel position of the mouse click
       let x = mouseX;
       let y = mouseY;
@@ -81,7 +92,15 @@ class Game {
   
   }
 
-  dragDropFood()
+  main(){
+    if(pictureTaken){
+      this.drawfood();
+      this.mousePressed();
+      this.mouseReleased();
+      this.mouseDragged()
+    }
+  }
+
 
   checkColor(currentPixels, matchingPixels){
     
@@ -103,7 +122,7 @@ class Game {
         this.counter++
 
         this.displayCounter()
- 
+     
      // console.log("color to match", this.colorToMatch.levels)
 
   }
@@ -120,9 +139,45 @@ class Game {
   }
 
   drawfood(){
-
-    
+    fill('blue');
+    noStroke();
+    ellipse(food.x, food.y, food.size);  
   }
+
+  mousePressed() {
+    // Check if mouse is over object
+    let d = dist(mouseX, mouseY, food.x, food.y);
+    if (d < food.size/2) {
+      // Start dragging object
+      food.dragging = true;
+    }
+  }
+
+  mouseReleased() {
+    // Stop dragging object
+    food.dragging = false;
+  }
+  
+  mouseDragged() {
+    // Drag object if it's being dragged
+    if (food.dragging) {
+      food.x = mouseX;
+      food.y = mouseY;
+    }
+  }
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+  
+  
+  
 
 
 }
