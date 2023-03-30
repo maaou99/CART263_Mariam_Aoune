@@ -7,7 +7,7 @@ Author Name: Mariam Aoune
 
 "use strict";
 
- 
+
 let balls = []
 let singleBall = []
 let startTime;

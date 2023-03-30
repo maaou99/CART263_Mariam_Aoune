@@ -1,6 +1,8 @@
 # Playful Interaction project
 ##### Mariam Aoune & Maloney Khim, April 11th. 
 
+![](ideaofresult.jpg)
+
 In our final project, we want to create a game where the user can build their own pet with legos and interact with it. 
 It is inspired by the imagination of children who have fun creating characters and objects with legos.
 First, the player builds an animal with the legos blocks and then they take a picture inside a delimited zone.
@@ -23,9 +25,9 @@ Here is the moodboard for the jungle background.
 ![](jungle-moodboard.jpg)
 
 ## Credits, resources, etc 
-ChatGPT
-The Coding Train
-P5js Reference
+*ChatGPT
+*The Coding Train
+*P5js Reference
 
 ## Anything else? 
 Add it!
