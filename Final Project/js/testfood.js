@@ -20,8 +20,23 @@ let vine4;
 // Load the image file
 function preload() {
     img = loadImage('food.png');
-    // leaf1 = loadImage('leaf1.gif');
-    // leaf2 = loadImage('leaf2.gif');
+    eye = loadImage('eye.gif');
+    // leaf1 = loadImage('leaf1-smoll.gif');
+    // leaf2 = loadImage('leaf2-smoll.gif');
+    // leaf3 = loadImage('leaf3-smoll.gif');
+    // leaf4 = loadImage('leaf4-smoll.gif');
+    // leaf5 = loadImage('leaf5-smoll.gif');
+    // leaf6 = loadImage('leaf6-smoll.gif');
+    // leaf7 = loadImage('leaf7-smoll.gif');
+    // leaf8 = loadImage('leaf8-smoll.gif');
+    // leaf9 = loadImage('leaf9-smoll.gif');
+    // leaf10 = loadImage('leaf10-smoll.gif');
+    // leaf11 = loadImage('leaf11-smoll.gif');
+    // leaf12 = loadImage('leaf12-smoll.gif');
+    // vine1 = loadImage('vine1.png');
+    // vine2 = loadImage('vine2-smoll.gif');
+    // vine3 = loadImage('vine3.png');
+    // vine4 = loadImage('vine4.png');
 
     // leaf1.resize(windowWidth, windowHeight);
     // leaf2.resize(windowWidth, windowHeight);
@@ -49,6 +64,9 @@ function setup() {
     foodX = 200;
     foodY = 200;
 
+    eyeX = 200;
+    eyeY = 400;
+
     speechRec = new p5.SpeechRec('en-US', gotSpeech);
     speechRec.continuous = true;
     speechRec.interimResults = false;
@@ -67,15 +85,18 @@ function draw() {
     // fill('blue');
     // circle(foodX, foodY, diameter);
 
-    // //Display the plant images
-    // imageMode(CENTER);
-    // image(leaf1, (windowWidth/2)-100, windowHeight/2, leaf1.width*0.75, leaf1.height*0.75);
-    // image(leaf2, (windowWidth/2)-100, windowHeight/2, leaf2.width*0.75, leaf2.height*0.75);
-    
+    // // //Display the plant images
+    // image(leaf1, 0, 0, leaf1.width, leaf1.height);
+    // image(leaf2, 0, 0, leaf2.width, leaf2.height);
+    // image(leaf3, 0, 0, leaf3.width, leaf3.height);
+    // image(leaf4, 0, 0, leaf4.width, leaf4.height);
+
 
 
     // Display the food image
     image(img, foodX - radius, foodY - radius, diameter, diameter);
+    // Display the eye image
+    image(eye, eyeX - radius, eyeY - radius, diameter, diameter);
 
 
     // Empty progress bar
