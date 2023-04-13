@@ -1,85 +1,45 @@
-# Playful Interaction project 
-##### Mariam Aoune & Maloney Khim, April 13th. 
-
-Game screenshot here! (To be added)
-
-![](gamescreenshot.jpg)
+# Playful Interaction project
+##### Mariam Aoune & Maloney Khim, April 11th. 
 
 In our final project, we want to create a game where the user can build their own pet with legos and interact with it. 
-It is inspired by the imagination of children who have fun creating characters and objects with legos. The program detects the legos and then a progress bar based on affection appears on the side of the screen. The user can only click inside of the red square, they cannot click outside of it. There are gifs of plants decorating the canvas to make it look more alive. The goal of the game is to fill the progress bar 8 times to receive 8 gifts from the pet. When 8 gifts are received, the user can download a screenshot of their virtual pet.
-
-
-Here are the steps to the game:
-
-1) After seeing the loading page, the player builds an animal with the red lego blocks.
-2) They put them in front of the cardboard background and take a picture of it with a webcam within the delimited zone.
-3) They listen and/or read the instructions to the game.
-4) They fill the progress bar 8 times by interacting with their pet.
-5) Those interactions include: naming the pet, dressing up their pet (by dragging and dropping an item on them), feeding their pet(by clicking on the button that says Feed the pet and then clicking on the pet) and talking with the pet.
-6) When the user collected the eight gifts, they receive a screenshot of their pet. Hooray, the user has finished the game!!! :D
-
+It is inspired by the imagination of children who have fun creating characters and objects with legos.
+First, the player builds an animal with the legos blocks and then they take a picture inside a delimited zone.
+The program detects the legos and then a score system based on affection appears on the side of the screen. The user can only click inside of the red square, they cannot click outside of it. There is a background of a jungle with gifs of plants around the animal.
+We can then interact with the pet by petting them (hovering the mouse over the animal),feeding them (dragging some food to them) 
+and talking to them (speaking specifics phrases like "I love you!" or "Good boy!"). 
+Each time the user does one of those actions, the affection points goes up until it reaches the max score and the user gets congratulated.
 
 ## Installation
-First, download the project folder on GitHub. Then download the p5.speech library and put it in the libraries folder if it's not already in the index.html file. You will also need a decent quality webcam camera, some red lego blocks (important to only use that color) and a cardboard jungle background.
-
+First, download the project folder on GitHub. Then download the p5.speech library and put it in the libraries folder. 
 
 ## Run
-To run the code, open the project folder on Visual Studio Code and make it go live. Build an animal with the red lego blocks. Connect a webcam to the computer and ideally, go sit next to the windows and take the picture of the lego block pet near a white wall. The animal has to be inside the square red frame. Then, the user can interact with the animal on the computer screen in multiple ways such as by naming it, dressing it, feeding it or talking with it. The four things the user can tell the pet are: "How are you?", "I love you", "You look cool" and "Good boy". The user cannnot interact with their pet if they click outside the red square.
-
+To run the code, open the project folder on Visual Studio Code and make it go live. Build an animal with the red lego blocks. Connect a webcam to the computer and ideally, go sit next to the windows and take the picture of the lego block pet near a white wall. The animal has to be inside the square red frame. Then, the user can interact with the animal on the computer screen by either petting it, feeding it, or talking to it. The user cannnot interact with their pet if they click outside the red square.
 
 ## Future iterations
-
 We would love to find a way to make our code create a digital drawing based on the picture taken. It would detect the color of the block (red), and recreate the lego blocks animal with shapes in p5js. The animal will then be placed in the middle of the background.
 
-
 ## Sketches, ideas
-
-Moodboard for the jungle background. 
-
+Here is the moodboard for the jungle background. 
 ![](jungle-moodboard.jpg)
 
-Initial sketch
-
-![](ideaofresult.jpg)
-
-Background (all the elements together, not-animated)
-
-![](junglebackground-preview.jpg)
-
-Dressing up items & Food
-
-![](eyes.gif)
-![](bowtie.png)
-![](tophat@2x.png)
-![](bunnyears@2x.png)
-![](foodv2.png.jpg)
-
-
-Loading page animation
-
-![](egg.gif)
-
-
-
 ## Credits, resources, etc 
+ChatGPT
+The Coding Train
+P5js Reference
 
-* Code reference : ChatGPT, The Coding Train & P5.js Reference
-* Instruction voice: Maloney's sister
-* Game soundtrack sources : BBC Sound Effects & Pixabay Geoff Harvey
-* Wood background : Adobe Stock
-* Font used: Google Fonts
+## Anything else? 
+Add it!
 
+## Notes on code comments and documentation
 
-## Anything else?
+Documentation is a critical part of writing code. It is for you, but also for others you might want to share your code with. If you have ever used code written by someone else, think about what they could have done to help you understand it better. If you're proud of your code, documenting it can help others learn.
 
-Instruction text :
+Imagine: its 2 years from now and you've completely forgotten what you wrote, and your gallery show has to be installed tomorrow. Your code almost works, but you can't remember what you wrote. What might help you make changes quickly and remember what you write?
 
-You find yourself lost in the middle of a dense jungle with no idea how to get out. Suddenly, you come across a friendly animal that can help you find your way back to civilization! But in order to earn their trust, you'll need to raise their affection progress bar by playing with them and taking care of them.
-
-To get started, give your animal friend a name. Then, you can dress them up, feed them, and talk to them to make them happy! Remember, if you ask them how they're doing or give them compliments, they'll be even happier and their progress bar will fill up faster.
-
-Once you've filled up their progress bar to 100%, you'll receive a gift from your animal friend! Collect 8 gifts and you'll be able to save a picture of your new jungle buddy.
-
-So, are you ready to make a new friend and find your way out of the jungle? Let's get started!
-
-
+- Always comment your code. Add your name and project title in the main code file.  
+- Every function should be named described clearly according to what they do.  
+- All variables should have clear and reasonable names that describe what they do. 
+- Sections of code that make decisions or perform complex tasks should be described clearly in comments.  
+- Sections of code borrowed from other places should be cited and linked.  
+- Old code should be removed!  
+- Make your readme file clear and readable. 

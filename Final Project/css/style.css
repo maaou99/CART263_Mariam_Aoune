@@ -25,10 +25,12 @@ button{
   height:30px;
   position: absolute;
   top: 50%;
+  
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-#defaultCanvas0{
+#loadingPage{
+  background-color: black;
    
 }
