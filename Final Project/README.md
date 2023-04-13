@@ -18,6 +18,8 @@ To run the code, open the project folder on Visual Studio Code and make it go li
 ## Future iterations
 We would love to find a way to make our code create a digital drawing based on the picture taken. It would detect the color of the block (red), and recreate the lego blocks animal with shapes in p5js. The animal will then be placed in the middle of the background.
 
+We w
+
 ## Sketches, ideas
 Here is the moodboard for the jungle background. 
 ![](jungle-moodboard.jpg)
@@ -27,19 +29,7 @@ ChatGPT
 The Coding Train
 P5js Reference
 
-## Anything else? 
-Add it!
+## Challenges
 
-## Notes on code comments and documentation
+The biggest challenge encountered was choosing how many and what kind of features we should implement. We wanted the features to blend very well and connect to oneother. The player must feel like it is accomplishing one big task (ex: caring for their pet), by accomplishing smaller tasks such as feeding it.  
 
-Documentation is a critical part of writing code. It is for you, but also for others you might want to share your code with. If you have ever used code written by someone else, think about what they could have done to help you understand it better. If you're proud of your code, documenting it can help others learn.
-
-Imagine: its 2 years from now and you've completely forgotten what you wrote, and your gallery show has to be installed tomorrow. Your code almost works, but you can't remember what you wrote. What might help you make changes quickly and remember what you write?
-
-- Always comment your code. Add your name and project title in the main code file.  
-- Every function should be named described clearly according to what they do.  
-- All variables should have clear and reasonable names that describe what they do. 
-- Sections of code that make decisions or perform complex tasks should be described clearly in comments.  
-- Sections of code borrowed from other places should be cited and linked.  
-- Old code should be removed!  
-- Make your readme file clear and readable. 
