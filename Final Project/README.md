@@ -28,7 +28,7 @@ To run the code, open the project folder on Visual Studio Code and make it go li
 
 ## Future iterations
 
-We would love to find a way to make our code create a digital drawing based on the picture taken. It would detect the color of the block (red), and recreate the lego blocks animal with shapes in p5js. The animal will then be placed in the middle of the background.
+We would love to find a way to make our code create a digital drawing based on the picture taken. It would detect the color of the block (red), and recreate the lego blocks animal with shapes in p5js. The animal will then be placed in the middle of the background. Maybe also improve the UI a little bit.
 
 
 ## Sketches, ideas
@@ -44,6 +44,9 @@ Initial sketch
 Background (all the elements together, not-animated)
 
 ![](junglebackground-preview.jpg)
+
+Legos + cardboard background
+![](legobackground.jpg)
 
 Dressing up items & Food
 
@@ -63,6 +66,7 @@ Loading page animation
 ## Credits, resources, etc 
 
 * Code reference : ChatGPT, The Coding Train & P5.js Reference
+* Library used : P5.Speech (https://idmnyu.github.io/p5.js-speech/) 
 * Instruction voice: Maloney's sister
 * Game soundtrack sources : BBC Sound Effects & Pixabay Geoff Harvey
 * Wood background : Adobe Stock
@@ -73,7 +77,7 @@ Loading page animation
 
 One aspect that was a challenging was the type of features we wanted to implement. The user must have a general goal/task to accomplish (ex: taking care of the pet). They must complete smaller tasks (ex: feeding the animal). It was challenging to find features that blend well with eachother and connect to a final goal. 
 
-##Instruction text :
+## Instruction text 
 
 You find yourself lost in the middle of a dense jungle with no idea how to get out. Suddenly, you come across a friendly animal that can help you find your way back to civilization! But in order to earn their trust, you'll need to raise their affection progress bar by playing with them and taking care of them.
 
