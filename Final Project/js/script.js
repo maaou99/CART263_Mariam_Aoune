@@ -2,6 +2,7 @@
 Title of Project: Build-A-Blocks
 Authors Name: Mariam Aoune & Maloney Khim
 
+This games allows the player to build an animal in the physical world and interact with it on their screen 
  
 */
 
@@ -98,8 +99,13 @@ function preload() {
 }
 
 function setup() {
+  //setting the font, the font is from google fonts
   textFont('Delicious Handrawn')
+
+  //full screen canvas
   createCanvas(width, height);
+
+  //setting the x any postion of the eyes, the ears, the hat and the bow
   imgEyeX = width / 2 + 120;
   imgEyeY = height / 2 + 100;
 
@@ -137,17 +143,9 @@ function setup() {
 
 
 
-
-
-  //vine1.resize(100,0)
-
-  // createCanvas(400, 400);
-
-
   // Instantize the two classes 
   webcamCapture = new WebCam();
   startGame = new Game();
-
 
 
   webcamCapture.setup(); // Sets up the camera 
@@ -159,26 +157,25 @@ function setup() {
 
 
 
-
-
-
-
-
 }
 
 
 function draw() {
 
 
-  if (pictureTaken) {
-    webcamCapture.displayScreen();
 
-  }
+  //if the picture has been taken, display the picture 
+  webcamCapture.displayScreen();
 
+
+  //calling the main function in webcam class
   webcamCapture.main()
+
+  //callinf the main function is game class
   startGame.main()
 
   if (webcamCapture.buttonClicked) {
+    //if take picture button is clicked then start countdown
     webcamCapture.countdownTimer()
 
   }
@@ -219,7 +216,16 @@ function mousePressed() {
 
   if (pictureTaken) {
 
-    // Check if the mouse is over the image
+    // Check if the mouse is clicking on the eye, ears, hat or bow
+
+    //If the mouse click is within the bounding box of the eye image,
+    // the draggingEye property is set to true. Similarly, if the mouse
+    // click is within the bounding box of the ears, hat, or bowtie, their 
+    //respective dragging properties are set to true
+
+    //dragging properties are used to track whether the user is currently 
+    //dragging a particular image element when the mouse is moved
+
     if (mouseX > imgEyeX && mouseX < imgEyeX + eyeImg.width - 90 &&
       mouseY > imgEyeY && mouseY < imgEyeY + eyeImg.height - 90) {
       draggingEye = true;
@@ -248,6 +254,8 @@ function mousePressed() {
 function mouseReleased() {
   // If the image was being dragged, drop it
   if (draggingEye || draggingEars || draggingHat || draggingBow) {
+
+    //the eye, ears, hat or bow are not being dragged
     draggingEye = false;
     draggingEars = false
     draggingHat = false
@@ -269,48 +277,57 @@ class Game {
     this.tolerance = 130;
     //the color to identify is red
     this.colorRedToMatch = color(255, 0, 0)
-    this.colorBrownToMatch = color(128, 82, 9)
 
-
-    this.counter = 0
-    this.eyeX = 200
-    this.eyeY = 200
 
     // - gradient : https://youtu.be/-MUOweQ6wac 
     // - progress bar : ChatGPT
+
+    //initial value of the bar is 0
     this.progress = 0
+
+    //the maximum value is 100
     this.maxProgress = 100
-
+    //button allowing the player to display the story 
     this.buttonDisplayInfo;
-    this.buttonDisplayFood;
-    this.buttonDisplayDownload;
-    this.isFeeding = false
-    this.buttonCreatedInfo = false
-    this.buttonCreatedFood = false
-    this.divCreated = false
-    this.textContainer;
-    this.soundIcon = loadImage('assets/images/volume.png')
-    this.widthSoundIcon = 25;
-    this.heightSoundIcon = 20;
 
+    //button allowing the player to feed the animal
+    this.buttonDisplayFood;
+
+    //the animal is not being initally fed
+    this.isFeeding = false
+
+    //button has not been created yet
+    this.buttonCreatedInfo = false
+
+    ////button has not been created yet
+    this.buttonCreatedFood = false
+
+    //the story has not been initially created
+    this.divCreated = false
+
+    //to close the pop up
     this.buttonClose = false
 
+    //the button to remove the pop up
     this.buttonX;
 
-    this.soundVoice = loadSound('assets/sounds/soundex.mp3')
+
+    //loading assets
     this.soundInstructions = loadSound('assets/sounds/instruction.mp3')
     this.gift = loadImage('assets/images/gift.png')
-
     this.leaf = createImage('assets/images/leaf2-smoll.gif')
 
-    this.showGift = false
+
     this.giftXAdd = 0
     this.giftYAdd = 0
+    //does not initially show the gifts
+    this.showGift = false
+
+    //there are no gifts when the game starts
     this.gifts = []
     this.rowsGifts = 0
 
-    this.isHovered = false;
-
+    //the image has not been downloaded
     this.imageDownloaded = false
 
 
@@ -324,26 +341,33 @@ class Game {
 
     if (pictureTaken && !webcamCapture.loadingPageOn) {
 
-      //this.displayCounter()
+      //if the picture has been taken and loading page has disappeared excecute these functions below
 
+      //display all buttons
       this.showInfoButton()
       this.showFoodButton()
-      this.displayStory()
+
+      //draw jungle
       this.drawForest()
+
+      //draw face and clothes 
       this.drawFaceFeatures()
+
+      //actions the gradient bar does
       this.GradientBar()
-      //this.showDownloadButton()
-
-
-
 
     }
 
-
-
+    //This code block is executed when the user is dragging an image element (eye, ears, hat, or bowtie) with the mouse
     if (draggingEye) {
+
+      //checks which image element is being dragged based on the dragging properties set in the mousePressed()
+
+      //checks which image element is being dragged based on the dragging properties set in the mousePressed()
       imgEyeX = mouseX;
       imgEyeY = mouseY;
+
+      //cursor is set arrow 
       cursor(ARROW)
     } else if (draggingEars) {
       imgEarsX = mouseX
@@ -360,9 +384,12 @@ class Game {
     }
 
     if (this.divCreated) {
+
+      //if the div has been created then display story 
       this.displayStory()
 
-      this.displaySoundIcon()
+      //style and displays the x buttopn
+      this.displayXIcon()
 
 
     }
@@ -373,8 +400,8 @@ class Game {
 
   drawForest() {
 
+    //displays all the assets to draw the forest 
     image(leaf, 0, height - 300, 0, 300);
-
     image(leaf3, 20, height - 150, 300, 0);
     image(leaf2, 100, height - 100, 400, 0);
     image(leaf1, 120, height - 300, 300, 0);
@@ -391,56 +418,68 @@ class Game {
     image(vine2, -220, -50, 800, 900)
     image(vine3, 650, 0, 800, 900)
 
-
-
-    // image(vine1, 0, 0, 800, 900)
-
-
-
-
   }
 
   showFoodButton() {
+
+    //creates the feed me button and listens to the mouse event 
+
     if (!this.buttonCreatedFood) {
 
+      //creates a button with the text "Feed Me!"
       this.buttonDisplayFood = createButton('Feed Me!');
 
 
       //position of button
       this.buttonDisplayFood.position(100, windowHeight - 150);
+
+      //style button 
       this.styleButton(this.buttonDisplayFood)
+
       //if the button is pressed then take a picture 
       this.buttonCreatedFood = true
 
+      //excecutes steps between brackets when the mouse is pressed
       this.buttonDisplayFood.mousePressed(() => {
+
+        //change the cursor icon
         cursor('assets/images/foodv2.png')
+
+        //the player is feeding the animal 
         this.isFeeding = true
 
-
       });
-
     }
-
   }
 
   showInfoButton() {
 
+    //creates the story button and listens to the mouse event 
+
     if (!this.buttonCreatedInfo) {
 
+      //creates a button with the text "The Story"
       this.buttonDisplayInfo = createButton('The Story');
 
       //position of button
       this.buttonDisplayInfo.position(100, windowHeight - 50);
 
-
+      //style button 
       this.styleButton(this.buttonDisplayInfo)
 
       //if the button is pressed then take a picture 
       this.buttonCreatedInfo = true
 
+      //excecutes steps between brackets when the mouse is pressed
       this.buttonDisplayInfo.mousePressed(() => {
+
+        //the voice over is played 
         this.soundInstructions.play()
+
+        //the div to display the story is available 
         this.divCreated = true
+
+        //the cursor changes its icon into an arrow 
         cursor(ARROW)
 
       });
@@ -450,16 +489,19 @@ class Game {
 
   displayStory() {
 
+    //displays the story when the div is available to write on
+
     if (this.divCreated) {
 
       fill('white')
       rectMode(CENTER)
 
+      //the wooden background
       image(loadingBackground, width / 2 - 350, height / 2 - 250, 750, 500);
-      //rect(width/2, height/2, 500, 400);
 
-      textSize(22) // Make the text size 22px
-      fill('white') // Make the text color white
+
+      textSize(22)
+      fill('white')
 
       text(`You find yourself lost in the middle of a dense jungle with no idea how to get out. 
       Suddenly, you come across a friendly animal that can help you find your way
@@ -481,19 +523,26 @@ class Game {
       text(`So, are you ready to make a new friend and find your way out of the jungle? 
            Let's get started!`
         , width / 2 + 30, 500, 950)
-      if (this.buttonClose) {
 
+      if (this.buttonClose) {
+        //the button x has been clicked 
         this.buttonX.mousePressed(() => {
 
+          //remove the div
           this.divCreated = false
+
+          //remove button
           this.buttonX.remove()
+
+          //stop playing the sound
           this.soundInstructions.stop()
+
+          //the button has finished being clicked 
           this.buttonClose = false
-          this.soundVoice.stop()
+
         });
 
       }
-      //this.canvas.mousePressed(this.removeDiv.bind(this))
 
     }
 
@@ -503,8 +552,9 @@ class Game {
 
   drawFaceFeatures() {
 
-    image(loadingLightWood, 100, 100, 450, 400);
+    //drawing all face and clothes features 
 
+    image(loadingLightWood, 100, 100, 450, 400)
     image(eyeImg, imgEyeX, imgEyeY, 130, 70);
     image(earsImg, imgEarsX, imgEarsY, 130, 130);
     image(hat, imgHatX, imgHatY, 130, 130);
@@ -513,16 +563,19 @@ class Game {
 
   }
 
-  displaySoundIcon() {
-    fill('#805209')
-    rect(width / 2 + 350, 520, 50, 50)
-    image(this.soundIcon, width / 2 + 335, 510, this.widthSoundIcon, this.heightSoundIcon);
+  displayXIcon() {
 
     if (!this.buttonClose && this.divCreated) {
+      //if the instruction bar has not disappeard and the insructions is appearing 
+
+      //creating button
       this.buttonX = createButton('X')
+      //setting the postion
       this.buttonX.position(width / 2 + 370, 130);
+      //setting the size 
       this.buttonX.size(30, 30)
 
+      //styling button X
       this.buttonX.style('background-color', '#805209');
       this.buttonX.style('color', 'white');
       this.buttonX.style('font-size', '24px');
@@ -567,7 +620,7 @@ class Game {
 
         //checks the color of the pixel
         this.checkRed(r, g, b)
-        this.checkBrown(r, g, b)
+
 
 
 
@@ -580,41 +633,183 @@ class Game {
 
   GradientBar() {
 
+    console.log('num of gifts',)
+
+    //created gradient bar 
     this.createGradientBar()
+
+    //updated proges bar text
     this.progressBarText()
 
-
+    //check if progress bar is complete 
     this.progressBarComplete()
+
+    //show gifts on screen
     this.displayGifts()
 
 
   }
 
   createGradientBar() {
-    rectMode(CORNERS) // Change the rectMode to CORNERS
-    noStroke(); // Remove the stroke of the gradient
-    // Empty progress bar
-    fill("#BDDBE1"); // Make the empty progress bar a bluish white color
-    rect(100, 70, 390, 30, 20); // Create the empty progress bar with a rounded rectangle
+
+    //draws gradient 
+    rectMode(CORNERS)
+    noStroke();
+
+    // Empty prograss bar
+    fill("#BDDBE1");
+    rect(100, 70, 390, 30, 20);
 
     //Fill the gradient progress bar
-    let gradient = drawingContext.createLinearGradient(10, 0, 300, 0); // Create a new gradient using the createLinearGradient() method of the drawingContext object. The gradient starts at position (10, 0) and ends at position (300, 0).
+    let gradient = drawingContext.createLinearGradient(10, 0, 300, 0);
+    //adds gradient 
 
+    //the darker color
+    gradient.addColorStop(0, color("#45ee23"));
+    //the lighter color
+    gradient.addColorStop(1, color("#227a16"));
+    drawingContext.fillStyle = gradient;
 
-    gradient.addColorStop(0, color("#45ee23")); // Make the first color of the gradient light green 
-    gradient.addColorStop(1, color("#227a16")); // Make the second color of the gradient a darker green  
-    drawingContext.fillStyle = gradient; // Set the fill style of the following rectange to this gradient 
-
-    rect(100, 70, this.progress * 3 + 100, 30, 20); // Create the filling of the progress bar with a rounded rectangle that has a gradient 
+    //draws gradient, the length depends on the percentage 
+    rect(100, 70, this.progress * 3 + 100, 30, 20);
 
   }
 
   progressBarText() {
     // Percentage text
-    fill("black"); // Make the text color black
-    textSize(22) // Make the text size 22px
-    textAlign(CENTER, CENTER); // Align the percentage text in the center of the progress bar
-    text(`${round(this.progress / this.maxProgress * 100)}%`, 240, 49); // Displays the current filling of the progress bar as a percentage
+    fill("black");
+    textSize(22)
+    textAlign(CENTER, CENTER);
+    text(`${round(this.progress / this.maxProgress * 100)}%`, 240, 49);
+
+  }
+
+
+  displayGifts() {
+    //displays a list of gift images on a canvas
+
+    //checks whether the showGift property is true,
+    // which indicates that there are gifts to be displayed. 
+    //If so, it loops through the array of gifts and displays
+    // each gift image using the image() function
+
+    if (this.showGift) {
+      console.log('showing gift')
+      let j = 0
+      for (let i = 0; i < this.gifts.length; i++) {
+
+        //If the gifts fit within the canvas width, 
+        //they are displayed on the same row. 
+        //Otherwise, the gifts are displayed on the next row, 
+        //with a y-coordinate offset of 50 pixels
+
+        if (width - (200 - (i * 40)) <= 1342) {
+          image(this.gifts[i], width - (200 - (i * 40)), 50 + this.giftYAdd, 50, 50)
+
+        } else {
+
+          image(this.gifts[i], width - (200 - (j * 40)), 50 + this.giftYAdd + (1 * 50), 50, 50)
+          j++
+
+        }
+
+      }
+
+      //, the code uses a setTimeout() 
+      //function to wait for 3 seconds before resetting the gifts array and setting 
+      //the imageDownloaded property to false. Additionally, if imageDownloaded is false,
+      // the downloadImage() function is called
+
+
+      //check if the number of gifts is equal to 8
+      this.checkNumberGifts()
+
+    }
+  }
+
+  checkNumberGifts() {
+
+    if (this.gifts.length === 8) {
+      //If the length of the gifts array is equal to 8
+      setTimeout(() => {
+        // wait for 3 seconds before emptying the gifts array 
+        this.gifts = []
+        //and stating the image has not been downloaded yet
+        this.imageDownloaded = false
+      }, 3000)
+
+      if (!this.imageDownloaded) {
+        //if the images has not been downloaded yet, download the image 
+        this.downloadImage()
+      }
+    }
+
+  }
+
+  downloadImage() {
+    //downloads the image 
+    saveCanvas("screenshot", "png")
+    //the image has been downloaded 
+    this.imageDownloaded = true
+
+  }
+
+
+
+
+  checkRed(r, g, b) {
+    //checks if the pixel that has been clicked on is red 
+    //if it yes then the progress bar will become greener 
+
+    //the color that matches the color of the pixel
+
+    //the r color
+    let matchRedR = this.colorRedToMatch.levels[0];
+
+    //the green color
+    let matchRedG = this.colorRedToMatch.levels[1];
+
+    //the blue color
+    let matchRedB = this.colorRedToMatch.levels[2];
+
+
+    //checks if the pixel matches the color desired
+    //the tolerence allows a little flexibility in terms of deciding 
+    //if the pixel color matches the desired color
+    //the red color could be darker or lighter 
+
+    if (r >= matchRedR - this.tolerance && r <= matchRedR + this.tolerance &&
+      g >= matchRedG - this.tolerance && g <= matchRedG + this.tolerance &&
+      b >= matchRedB - this.tolerance && b <= matchRedB + this.tolerance) {
+
+      //the pixel that has been clicked on matches the desired color 
+
+      if (this.isFeeding) {
+
+        //the feeding feature is on, the progrees can therefore increase 
+        this.progress = min(this.progress + 20, 100);
+
+      }
+
+      //checks the value of the progress bar 
+      this.checkProgressBar()
+
+
+    }
+  }
+
+  checkProgressBar() {
+    //checks if the progress bar has reached 100
+
+    if (this.progress === 100) {
+      //the progress bar is full
+
+      //push a gift into the collection of gifts
+      this.gifts.push(this.gift)
+
+
+
+    }
 
   }
 
@@ -622,6 +817,7 @@ class Game {
 
     if (this.progress === 100) { // If the progress bar is 100% filled...
       setTimeout(() => {
+
 
         this.progress = 0 // Turn back the progress bar to 0%
 
@@ -635,144 +831,19 @@ class Game {
 
   }
 
-  displayGifts() {
 
-    if (this.showGift) {
-      let j = 0
-      for (let i = 0; i < this.gifts.length; i++) {
+  styleButton(button) {
 
-        if (width - (200 - (i * 40)) <= 1342) {
-          image(this.gifts[i], width - (200 - (i * 40)), 50 + this.giftYAdd, 50, 50)
+    //stylig the two buttons 
 
-        } else {
-
-          image(this.gifts[i], width - (200 - (j * 40)), 50 + this.giftYAdd + (1 * 50), 50, 50)
-          j++
-
-
-        }
-
-
-
-      }
-
-      if (this.gifts.length === 8) {
-        setTimeout(() => {
-          this.gifts = []
-          this.imageDownloaded = false
-        }, 3000)
-
-        if (!this.imageDownloaded) {
-          this.downloadImage()
-        }
-      }
-
-    }
-
-
-
-  }
-
-  downloadImage() {
-    saveCanvas("screenshot", "png")
-    this.imageDownloaded = true
-
-  }
-
-
-
-  checkBrown(r, g, b) {
-
-    let matchGreenR = this.colorBrownToMatch.levels[0];
-    let matchGreenG = this.colorBrownToMatch.levels[1];
-    let matchGreenB = this.colorBrownToMatch.levels[2];
-
-
-    if (r === matchGreenR && g === matchGreenG && b === matchGreenB) {
-      alert('hi')
-
-      //counter appears
-
-
-    } else {
-
-    }
-
-  }
-
-
-  checkRed(r, g, b) {
-
-    //the color that matches the color of the pixel
-    let matchRedR = this.colorRedToMatch.levels[0];
-    let matchRedG = this.colorRedToMatch.levels[1];
-    let matchRedB = this.colorRedToMatch.levels[2];
-
-
-    //checks if the pixel matches the color desired
-    //the tolerence allows a little flexibility in terms of deciding 
-    //if the pixel color matches the desired color
-    //the red color could be darker or lighter 
-
-    if (r >= matchRedR - this.tolerance && r <= matchRedR + this.tolerance &&
-      g >= matchRedG - this.tolerance && g <= matchRedG + this.tolerance &&
-      b >= matchRedB - this.tolerance && b <= matchRedB + this.tolerance) {
-
-
-
-      if (this.isFeeding) {
-        this.progress = min(this.progress + 20, 100);
-
-      }
-
-      this.checkProgress()
-
-      //counter appears
-
-    } else {
-      this.isHovered = false
-    }
-  }
-
-  checkProgress() {
-    console.log('checkinggg')
-    if (this.progress === 100) {
-
-      this.gifts.push(this.gift)
-
-      if (this.gifts.length % 4 === 0) {
-        this.rowsGifts++
-      }
-
-    }
-
-  }
-
-
-
-
-  displayCounter() {
-
-    //styling of the counter 
-    fill('white')
-    noStroke()
-    rect(80, 60, 90, 60)
-    fill('black')
-    //the text is updated with the counter value 
-    text(`Counter: ${this.counter}`, 50, 60)
-
-
-  }
-
-  styleButton(button) { // Style the button The Story & Feed Me!
-
-    button.style('width', '150px'); // Make the button's width 150px long
-    button.style('height', '50px'); // Make the button's height 50px high
-    button.style('background-image', 'linear-gradient(#3A8F4C, #79BC8C)'); // Make the button's background color a gradient green
-    button.style('color', '#fff'); // Make the button's text color black
-    button.style('font-size', '20px'); // Make the font size of the button text 20px big
-    button.style('border-radius', '10px'); // Make the button's corners slightly roundish
-    button.style('border', '3px solid #0E272D'); // Make the borders of the button 3px thick, in a solid line style and dark green color
+    button.style('width', '150px');
+    button.style('height', '50px');
+    button.style('background-image', 'linear-gradient(#3A8F4C, #79BC8C)');
+    button.style('color', '#fff');
+    button.style('border', 'none');
+    button.style('font-size', '20px');
+    button.style('border-radius', '10px');
+    button.style('border', '3px solid #0E272D');
 
   }
 
@@ -785,17 +856,32 @@ class WebCam {
   //'live capture to be taken", https://editor.p5js.org/son/sketches/LuJ2eGf9p
   constructor() {
 
+    //capturing the video
     this.capture = null;
+
+    //canvas for the webcam
     this.canvas = null;
+
+    //store the picture taken 
     this.imgBackground = null;
-    this.imageToSave = null
+
+    //button to take a picture 
     this.buttonTakePicture
+
+    //to check if the loading page has loaded
     this.loadingPageOn = false
-    this.startTime;
+
+    //to check if the button has been clicked
     this.buttonClicked = false
-    this.startCountdown;
-    this.countdown = 5
     this.buttonTPClicked = false
+
+    //to store the timer when the button Take Picture has been clicked 
+    this.startCountdown;
+
+    //the number of seconds the countdown will be 
+    this.countdown = 5
+
+    //to check if the button has been created 
     this.buttonTPCreated = false
 
 
@@ -803,34 +889,42 @@ class WebCam {
   }
 
   setup() {
+
+    //setting up size of canvas
     this.canvas = createCanvas(windowWidth, windowHeight);
 
     //get video
     this.capture = createCapture(VIDEO);
 
     //size of the video
-    this.capture.size(windowWidth, windowHeight); //change the size to 320 x 240
+    this.capture.size(windowWidth, windowHeight);
+
+    //hide video
     this.capture.hide();
-
-
-
-
-
-
 
 
   }
 
   updateCountdown() {
-    let elapsedTime = millis() - this.startCountdown; // calculate the elapsed time
-    let remainingTime = this.countdown - Math.floor(elapsedTime / 1000); // calculate the remaining time
-    return remainingTime >= 0 ? remainingTime : 0; // return the remaining time or 0 if the countdown has ended
+    //calculates the remaining time for a countdown
+
+    //the difference between the current time (in milliseconds) and the start time of the countdown
+    let elapsedTime = millis() - this.startCountdown;
+
+    //the time remaining for the countdown (in seconds)
+    //Math.floor used to round down the elapsed time to the nearest second
+    let remainingTime = this.countdown - Math.floor(elapsedTime / 1000);
+
+    // return the remaining time or 0 if the countdown has ended
+    return remainingTime >= 0 ? remainingTime : 0;
   }
 
   countdownTimer() {
 
+    //get and displays the current time left 
     let remainingTime = this.updateCountdown();
 
+    //styling the text
     textAlign(CENTER, CENTER);
     fill('white')
     noStroke()
@@ -840,18 +934,9 @@ class WebCam {
 
   }
 
-
-
   takePicture() {
 
-
-    //steps once the picture is taken 
-
-    //the picture is taken
-
-
-    //saves the image 
-    //finalImage = image(this.capture, 0, 0, windowWidth, windowHeight); //draw the image being captured on webcam onto the canvas at the position (0, 0) of the canvas
+    //keeps the current frame so it can take the picture
 
     //the video is removed
     this.capture.remove()
@@ -859,55 +944,77 @@ class WebCam {
     //the button is removed 
     this.buttonTakePicture.remove()
 
-
-
-
   }
 
+
   displayScreen() {
+    //displays the photo that has been taken with the camera 
+    // or displays the loading screen 
+    //the choice depends on how long since the the player has taken the picture 
+
+    if (pictureTaken) {
+
+      let elapsed = millis() - this.startTimeLoadingPage
+
+      if (elapsed > 3500) {
+        //3.5 seconds has passed
+
+        //remove loading page
+        this.loadingPageOn = false
+
+        //display picture taken with webcam
+        this.displayWebcamCapture()
 
 
+      } else {
+        //3.5 has not passed yet
 
-    let elapsed = millis() - this.startTime
+        //keep displaying the loading page
+        this.loadingPageOn = true
 
-    if (elapsed > 3500) {
-      this.loadingPageOn = false
-      this.displayWebcamCapture()
-
-
-    } else {
-
-      this.loadingPageOn = true
-      background(loadingBackground)
+        //let the image behave as background
+        background(loadingBackground)
 
 
-      rectMode(CENTER)
-      image(egg, width / 2 - 100, height / 2 - 150, 200, 200)
-      textSize(36)
-      noStroke()
-      fill('#08A11C')
-      text('hatching...', width / 2, height / 2 + 100)
+        //styling the loading page
+        rectMode(CENTER)
+        image(egg, width / 2 - 100, height / 2 - 150, 200, 200)
+        textSize(36)
+        noStroke()
+        fill('#08A11C')
+        text('hatching...', width / 2, height / 2 + 100)
+
+      }
 
 
     }
-
 
   }
 
   displayWebcamCapture() {
 
+    //displays what has taken by the webcam
     image(this.imgBackground, 0, 0, width, height)
+
+    //remove the loading page
     this.loadingPageOn = false
   }
 
+
   saveImage() {
+    //saves the current video display as the background image 
+
+    //captures the current video display 
     imageToSave = this.capture.get()
-    //image(imageToSave, 0, 0, windowWidth, windowHeight)
+
+    //sets the current video display as the background image
     this.imgBackground = imageToSave;
   }
 
+
   displayTPButton() {
 
+    //displays the TP button and excecutes actions once the button has been clicked 
     if (!this.buttonTPCreated) {
 
       //sets up the camera 
@@ -918,24 +1025,38 @@ class WebCam {
       //position of button
       this.buttonTakePicture.position(windowWidth - 100, windowHeight - 100);
 
+      //styling the button
       this.buttonTakePicture.style('background-color', '#087517')
       this.buttonTakePicture.style('color', 'white')
       this.buttonTakePicture.style('font-family', 'sans-serif')
 
       //if the button is pressed then take a picture 
       this.buttonTakePicture.mousePressed(() => {
+        //button has been clicked
         this.buttonClicked = true
+
+        //starts time 
         this.startCountdown = millis()
         setTimeout(() => {
+          //after 5 seconds, the video display is saved as a picture and showed as a background
+
+          //the picture has been taken
           pictureTaken = true
+
+          //the button is no longer clicked 
           this.buttonClicked = false
+
+          //removes the button
           this.buttonTakePicture.remove()
           this.buttonTPClicked = true
+
+          //captures the video display and makes it a background
           this.saveImage()
-          this.startTime = millis()
+
+          //starts timer to know how long the loading page appeared
+          this.startTimeLoadingPage = millis()
         }, 5000)
       });
-
 
     }
 
@@ -943,30 +1064,36 @@ class WebCam {
 
 
   main() {
+    //main function of the class
+    //the general functions are mentionned 
 
-
-    // Draw the video
     if (!pictureTaken) {
+      //if the picture has not been taken 
+
       if (!loading) {
+
+        //if nothing is loading display take picture button 
         this.displayTPButton()
-
-
 
       }
 
+      //displaying video 
       image(this.capture, 0, 0, windowWidth, windowHeight);
 
     } else {
 
+      //if picture is taken, take picture 
       this.takePicture()
-
 
     }
 
     if (!loading && !this.buttonTPClicked) {
+      //if there is no loading page appearing the button take picture has not been clicked yet
 
       //draws rectangle
       setTimeout(this.drawPlaceHolder(), 1000)
+
+      //displaying text on the bottom of the screen while the video is playing 
       this.textInstructions()
     }
 
@@ -974,7 +1101,8 @@ class WebCam {
   }
 
   textInstructions() {
-    console.log('working')
+
+    //styling the text 
     noStroke()
     fill('white')
     textAlign(CENTER, CENTER)
@@ -985,6 +1113,8 @@ class WebCam {
   drawPlaceHolder() {
 
     // Draw a box on top of the video
+
+    //styling 
     stroke(8, 161, 28);
     strokeWeight(2);
     noFill()
@@ -996,4 +1126,6 @@ class WebCam {
 
 
 }
+
+
 
