@@ -1,7 +1,7 @@
 # Playful Interaction project 
 ##### Mariam Aoune & Maloney Khim, April 13th. 
 
-Game screenshot here! (To be added)
+
 
 ![](gamescreenshot.jpg)
 
@@ -69,9 +69,11 @@ Loading page animation
 * Font used: Delicious Handrawn (Google Fonts)
 
 
-## Anything else?
+## Challenges 
 
-Instruction text :
+One aspect that was a challenging was the type of features we wanted to implement. The user must have a general goal/task to accomplish (ex: taking care of the pet). They must complete smaller tasks (ex: feeding the animal). It was challenging to find features that blend well with eachother and connect to a final goal. 
+
+##Instruction text :
 
 You find yourself lost in the middle of a dense jungle with no idea how to get out. Suddenly, you come across a friendly animal that can help you find your way back to civilization! But in order to earn their trust, you'll need to raise their affection progress bar by playing with them and taking care of them.
 
